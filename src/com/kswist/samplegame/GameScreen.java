@@ -32,7 +32,8 @@ public class GameScreen extends Screen {
 
 	private ArrayList tilearray = new ArrayList();
 
-	int livesLeft = 1;
+	private final static int TOUCH_OFFSET = 70;
+	private int livesLeft = 1;
 	Paint paint, paint2;
 
 	public GameScreen(Game game) {
@@ -168,13 +169,14 @@ public class GameScreen extends Screen {
 			TouchEvent event = touchEvents.get(i);
 			if (event.type == TouchEvent.TOUCH_DOWN) {
 
-				if (inBounds(event, 0, 285, 65, 65)) {
-					robot.jump();
-					currentSprite = anim.getImage();
-					robot.setDucked(false);
-				}
+				// if (inBounds(event, 0, 285, 65, 65)) {
+				// robot.jump();
+				// currentSprite = anim.getImage();
+				// robot.setDucked(false);
+				// }
 
-				else if (inBounds(event, 0, 350, 65, 65)) {
+				// else
+				if (inBounds(event, 0, 350, 65, 65)) {
 
 					if (robot.isDucked() == false && robot.isJumped() == false
 							&& robot.isReadyToFire()) {
@@ -182,25 +184,29 @@ public class GameScreen extends Screen {
 					}
 				}
 
-				else if (inBounds(event, 0, 415, 65, 65)
+				// else if (inBounds(event, 0, 415, 65, 65)
+				else if (event.y - TOUCH_OFFSET > robot.getCenterY()
 						&& robot.isJumped() == false) {
 					currentSprite = Assets.characterDown;
 					robot.setDucked(true);
-					robot.setSpeedX(0);
+					// robot.setSpeedX(0);
 
-				}
-
-				if (event.x > 400) {
-					// Move right.
+				} else if (event.x - TOUCH_OFFSET > robot.getCenterX()
+						&& event.y + TOUCH_OFFSET < robot.getCenterY()) {
+					robot.jump();
 					robot.moveRight();
-					robot.setMovingRight(true);
-
-				}
-				if (event.x < 400) {
-					// Move right.
+				} else if (event.x + TOUCH_OFFSET < robot.getCenterX()
+						&& event.y + TOUCH_OFFSET < robot.getCenterY()) {
+					robot.jump();
 					robot.moveLeft();
-					robot.setMovingLeft(true);
 
+				} else if (event.x - TOUCH_OFFSET> robot.getCenterX()) {
+					robot.moveRight();
+				} else if (event.x + TOUCH_OFFSET< robot.getCenterX()) {
+					robot.moveLeft();
+
+				} else if (event.y + TOUCH_OFFSET < robot.getCenterY()) {
+					robot.jump();
 				}
 
 			}
@@ -217,11 +223,14 @@ public class GameScreen extends Screen {
 					pause();
 
 				}
+				robot.setDucked(false);
+				// if (event.x > 400) {
+				robot.stopRight();
+				// }
 
-				if (event.x > 400) {
-					// Move right.
-					robot.stopRight();
-				}
+				// if (event.x < 400) {
+				robot.stopLeft();
+				// }
 			}
 
 		}

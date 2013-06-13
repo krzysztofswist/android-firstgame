@@ -38,21 +38,21 @@ public class Robot {
     public void update() {
         // Moves Character or Scrolls Background accordingly.
 
-        if (speedX < 0) {
+        //if (speedX < 0) {
             centerX += speedX;
-        }
+        //}
         if (speedX == 0 || speedX < 0) {
             bg1.setSpeedX(0);
             bg2.setSpeedX(0);
 
         }
-        if (centerX <= 200 && speedX > 0) {
-            centerX += speedX;
-        }
-        if (speedX > 0 && centerX > 200) {
-            bg1.setSpeedX(-MOVESPEED / 5);
-            bg2.setSpeedX(-MOVESPEED / 5);
-        }
+//        if (centerX <= 200 && speedX > 0) {
+//            centerX += speedX;
+//        }
+//        if (speedX > 0 && centerX > 200) {
+//            bg1.setSpeedX(-MOVESPEED / 5);
+//            bg2.setSpeedX(-MOVESPEED / 5);
+//        }
 
         // Updates Y Position
         centerY += speedY;

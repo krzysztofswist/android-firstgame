@@ -10,14 +10,14 @@ public class Assets {
     public static Image tiledirt, tilegrassTop, tilegrassBot, tilegrassLeft, tilegrassRight, characterJump, characterDown;
     public static Image button;
     public static Sound click;
-    public static Music theme;
+    //public static Music theme;
    
     public static void load(SampleGame sampleGame) {
         // TODO Auto-generated method stub
-        theme = sampleGame.getAudio().createMusic("menutheme.mp3");
-        theme.setLooping(true);
-        theme.setVolume(0.85f);
-        theme.play();
+//        theme = sampleGame.getAudio().createMusic("menutheme.mp3");
+//        theme.setLooping(true);
+//        theme.setVolume(0.85f);
+//        theme.play();
     }
    
 }
