@@ -176,7 +176,7 @@ public class GameScreen extends Screen {
 				// }
 
 				// else
-				if (inBounds(event, 0, 350, 65, 65)) {
+				if (inBounds(event, 0, 415, 65, 65)) {
 
 					if (robot.isDucked() == false && robot.isJumped() == false
 							&& robot.isReadyToFire()) {
@@ -224,13 +224,9 @@ public class GameScreen extends Screen {
 
 				}
 				robot.setDucked(false);
-				// if (event.x > 400) {
 				robot.stopRight();
-				// }
-
-				// if (event.x < 400) {
 				robot.stopLeft();
-				// }
+				
 			}
 
 		}
@@ -415,10 +411,10 @@ public class GameScreen extends Screen {
 
 	private void drawRunningUI() {
 		Graphics g = game.getGraphics();
-		g.drawImage(Assets.button, 0, 285, 0, 0, 65, 65);
-		g.drawImage(Assets.button, 0, 350, 0, 65, 65, 65);
-		g.drawImage(Assets.button, 0, 415, 0, 130, 65, 65);
-		g.drawImage(Assets.button, 0, 0, 0, 195, 35, 35);
+		g.drawImage(Assets.button_skills, 0, 415, 0, 0, 65, 65);
+//		g.drawImage(Assets.button_skills, 65, 415, 0, 65, 65, 65);
+//		g.drawImage(Assets.button_skills, 130, 415, 0, 130, 65, 65);
+//		g.drawImage(Assets.button_skills, 195, 415, 0, 195, 65, 65);
 
 	}
 
